@@ -97,7 +97,5 @@ local.properties
 hs_err_pid*
 
 # properties files
-*.properties
-!log4j.properties
 
 # End of https://www.gitignore.io/api/java,eclipse
