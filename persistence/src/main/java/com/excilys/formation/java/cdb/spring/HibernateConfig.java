@@ -29,7 +29,7 @@ public class HibernateConfig {
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setDataSource(dataSource()); 
         sessionFactory.setPackagesToScan("com.excilys.formation.java.cdb.models");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;

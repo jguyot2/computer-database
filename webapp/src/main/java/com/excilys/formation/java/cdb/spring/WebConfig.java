@@ -18,20 +18,22 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-
 @Configuration
 @EnableWebMvc
-@ComponentScan({"com.excilys.formation.java.cdb.controllers", "com.excilys.formation.java.cdb.restcontrollers"})
+@ComponentScan({ "com.excilys.formation.java.cdb.controllers",
+        "com.excilys.formation.java.cdb.restcontrollers" })
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 
     @Bean
     public ViewResolver getViewLocation() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        InternalResourceViewResolver viewResolver =
+                new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
@@ -40,17 +42,18 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        ResourceBundleMessageSource messageSource =
+                new ResourceBundleMessageSource();
         messageSource.setBasename("/languages/message");
         messageSource.setDefaultEncoding("ISO-8859-1");
         return messageSource;
     }
 
     @Bean
-    public LocaleResolver localeResolver(){
-    CookieLocaleResolver resolver = new CookieLocaleResolver();
-    resolver.setDefaultLocale(new Locale("fr"));
-    return resolver;
+    public LocaleResolver localeResolver() {
+        CookieLocaleResolver resolver = new CookieLocaleResolver();
+        resolver.setDefaultLocale(new Locale("fr"));
+        return resolver;
     }
 
     @Override

@@ -2,8 +2,8 @@ package com.excilys.formation.java.cdb.dtos;
 
 public class PageDTO {
     
-    private int currentPage;
-    private int pageSize;
+    private int currentPage = 1;
+    private int pageSize = 10;
     
     public int getCurrentPage() {
         return currentPage;

@@ -10,13 +10,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(unique = true)
     private String username;
+
     private String password;
     private String role;
 
@@ -47,8 +48,14 @@ public class User {
     public String getRole() {
         return role;
     }
-    
+
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", username=" + username + ", password="
+                + password + ", role=" + role + "]";
     }
 }

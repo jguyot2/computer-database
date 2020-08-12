@@ -20,6 +20,7 @@ import com.excilys.formation.java.cdb.models.Company;
 import com.excilys.formation.java.cdb.models.Computer;
 import com.excilys.formation.java.cdb.services.CompanyService;
 import com.excilys.formation.java.cdb.services.ComputerService;
+import com.excilys.formation.java.cdb.services.InvalidComputerException;
 
 @Controller
 @RequestMapping("/EditComputer")
@@ -64,7 +65,7 @@ public class EditComputerController {
     }
 
     @PostMapping
-    public ModelAndView editComputer(ComputerDTO computerDTO, CompanyDTO companyDTO, @RequestParam Integer currentPage) {
+    public ModelAndView editComputer(ComputerDTO computerDTO, CompanyDTO companyDTO, @RequestParam Integer currentPage) throws InvalidComputerException {
         if (companyDTO.getIdCompany() != null && !companyDTO.getIdCompany().equals("0")){
             computerDTO.setCompanyDTO(companyDTO);
         }

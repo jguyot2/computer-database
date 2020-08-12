@@ -20,6 +20,7 @@ import com.excilys.formation.java.cdb.models.Company;
 import com.excilys.formation.java.cdb.models.Computer;
 import com.excilys.formation.java.cdb.services.CompanyService;
 import com.excilys.formation.java.cdb.services.ComputerService;
+import com.excilys.formation.java.cdb.services.InvalidComputerException;
 import com.excilys.formation.java.cdb.validators.ComputerValidator;
 
 @Controller
@@ -31,7 +32,7 @@ public class AddComputerController {
     private CompanyService companyService;
 
     private ComputerService computerService;
-
+ 
     public AddComputerController (CompanyService companyService, ComputerService computerService) {
         this.companyService = companyService;
         this.computerService = computerService;
@@ -48,7 +49,7 @@ public class AddComputerController {
     }
 
     @PostMapping
-    public ModelAndView addComputer(ComputerDTO computerDTO, CompanyDTO companyDTO) {
+    public ModelAndView addComputer(ComputerDTO computerDTO, CompanyDTO companyDTO) throws InvalidComputerException {
         if (companyDTO.getIdCompany() != null && !companyDTO.getIdCompany().equals("0")){
             computerDTO.setCompanyDTO(companyDTO);
         }
